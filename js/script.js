@@ -24,6 +24,8 @@
 // tampilkanSemuaMenu();
 
 // $(".nav-link").on("click", function () {
+//     $("#daftar-menu").html('');
+
 //     $(".nav-link").removeClass("active");
 //     $(this).addClass("active");
 
@@ -97,6 +99,11 @@ tampilkanSemuaMenu();
 const navLink = document.querySelectorAll(".nav-link");
 navLink.forEach(link => {
     link.addEventListener('click', function (event) {
+
+        // Menghilangkan data terlebih dahulu setelah di klik
+        const daftarMenu = document.getElementById("daftar-menu");
+        daftarMenu.innerHTML = "";
+
         navLink.forEach(link => link.classList.remove('active'));
         event.target.classList.add('active');
 
@@ -132,13 +139,11 @@ navLink.forEach(link => {
                         }
                     });
 
-                    const daftarMenu = document.getElementById("daftar-menu");
                     daftarMenu.innerHTML = content;
                 }
             }
             xhr.open('GET', 'data/pizza.json', true);
             xhr.send();
         }
-
     });
 });
